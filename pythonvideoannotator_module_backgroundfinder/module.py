@@ -16,7 +16,7 @@ class Module(object):
 
 
 		self.mainmenu[1]['Modules'].append(
-			{'Background finder': self.backgroundfinder_window.show, 'icon':conf.ANNOTATOR_ICON_PATH },			
+			{'Calculate the video background': self.backgroundfinder_window.show, 'icon':conf.ANNOTATOR_ICON_BACKGROUND },			
 		)
 
 

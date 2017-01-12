@@ -16,7 +16,7 @@ from pyforms.Controls import ControlProgress
 from mcvgui.dialogs.simple_filter import SimpleFilter
 from mcvapi.blobs.order_by_position import combinations
 
-from pythonvideoannotator_models_gui.dialogs.videos_selector import VideosSelectorDialog
+from pythonvideoannotator_models_gui.dialogs import VideosDialog
 from mcvapi.filters.background_detector import BackgroundDetector
 
 import json
@@ -56,8 +56,9 @@ class BackgroundFinderWindow(BaseWidget):
 			'_progress'
 		]
 
-		self.videos_dialog = VideosSelectorDialog(self)
+		self.videos_dialog = VideosDialog(self)
 		self._panel.value = self.videos_dialog
+		self.videos_dialog.interval_visible = False
 
 		self._apply.value			= self.__apply_event
 		self._apply.icon 			= conf.ANNOTATOR_ICON_PATH
@@ -97,7 +98,7 @@ class BackgroundFinderWindow(BaseWidget):
 			self._apply.label 			= 'Cancel'
 
 			total_steps = 0
-			for video in self.videos_dialog.selected_data: total_steps += video.total_frames
+			for video, _ in self.videos_dialog.selected_data: total_steps += video.total_frames
 
 			self._progress.min = 0
 			self._progress.max = total_steps
@@ -105,7 +106,7 @@ class BackgroundFinderWindow(BaseWidget):
 
 			self._base_nframes = 0
 			exit = True
-			for video in self.videos_dialog.selected_data:
+			for video, _ in self.videos_dialog.selected_data:
 
 				if not self._apply.checked:	break
 				
@@ -119,7 +120,7 @@ class BackgroundFinderWindow(BaseWidget):
 				bg.detect( self._jump_2_frame.value, self._cmp_jump.value, self._threshold.value )
 				
 				image = video.create_image()
-				image.name = 'background-{0}'.format(len(video.images))
+				image.name = 'background-{0}'.format(len(list(video.images)))
 				image.image = bg.background_color
 				
 
