@@ -19,7 +19,7 @@ from mcvapi.blobs.order_by_position import combinations
 from pythonvideoannotator_models_gui.dialogs import VideosDialog
 from mcvapi.filters.background_detector import BackgroundDetector
 
-import json
+import simplejson as json
 
 class BackgroundFinderWindow(BaseWidget):
 
@@ -27,7 +27,11 @@ class BackgroundFinderWindow(BaseWidget):
 		super(BackgroundFinderWindow, self).__init__('Background finder', parent_win=parent)
 		self.mainwindow = parent
 
-		self.layout().setMargin(5)
+		if conf.PYFORMS_USE_QT5:
+			self.layout().setContentsMargins(5,5,5,5)
+		else:
+			self.layout().setMargin(5)
+		
 		self.setMinimumHeight(400)
 		self.setMinimumWidth(400)
 
