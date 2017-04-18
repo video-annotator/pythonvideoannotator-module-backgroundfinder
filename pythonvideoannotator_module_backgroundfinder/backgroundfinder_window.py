@@ -143,7 +143,7 @@ class BackgroundFinderWindow(BaseWidget):
 			self._progress.hide()
 
 			
-			if exit: self.close()
+			#if exit: self.close()
 
 
 
