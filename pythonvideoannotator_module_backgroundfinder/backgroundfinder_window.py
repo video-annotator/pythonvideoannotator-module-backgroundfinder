@@ -38,7 +38,7 @@ class BackgroundFinderWindow(BaseWidget):
 		self._panel			= ControlEmptyWidget('Videos')
 		self._image 		= ControlImage('Image')
 		self._progress  	= ControlProgress('Progress')
-		self._apply 		= ControlButton('Apply and close', checkable=True)
+		self._apply 		= ControlButton('Apply', checkable=True)
 
 		self._matrixSize 	= ControlSlider('Gaussian blur matrix size', 5, 1, 11)
 		self._sigmaX 		= ControlSlider('Gaussian blur sigma X', 5, 1, 11)
@@ -90,7 +90,7 @@ class BackgroundFinderWindow(BaseWidget):
 
 	def __apply_event(self):
 
-		if self._apply.checked and self._apply.label == 'Apply and close':
+		if self._apply.checked and self._apply.label == 'Apply':
 			self._panel.enabled 		= False
 			self._image.enabled 		= False
 			self._matrixSize.enabled 	= False
@@ -137,7 +137,7 @@ class BackgroundFinderWindow(BaseWidget):
 			self._jump_2_frame.enabled 	= True
 			self._cmp_jump.enabled 		= True
 			self._threshold.enabled 	= True
-			self._apply.label 			= 'Apply and close'
+			self._apply.label 			= 'Apply'
 			exit 						= self._apply.checked
 			self._apply.checked 		= False
 			self._progress.hide()
