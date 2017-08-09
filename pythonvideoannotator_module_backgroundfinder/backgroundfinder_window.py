@@ -121,14 +121,19 @@ class BackgroundFinderWindow(BaseWidget):
 					update_function 		= self.__update_image_event
 				)
 
+				print(0)
 				bg.detect( self._jump_2_frame.value, self._cmp_jump.value, self._threshold.value )
-				
+				print(1)
 				image = video.create_image()
+				print(2)
 				image.name = 'background-{0}'.format(len(list(video.images)))
+				print(3)
 				image.image = bg.background_color
+				print(4)
 				
 
 				self._base_nframes += video.total_frames
+				print(5)
 
 			self._panel.enabled 		= True
 			self._image.enabled 		= True
@@ -141,6 +146,8 @@ class BackgroundFinderWindow(BaseWidget):
 			exit 						= self._apply.checked
 			self._apply.checked 		= False
 			self._progress.hide()
+
+			print(6)
 
 			
 			#if exit: self.close()
