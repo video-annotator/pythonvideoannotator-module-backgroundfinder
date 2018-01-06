@@ -40,12 +40,12 @@ class BackgroundFinderWindow(BaseWidget):
 		self._progress  	= ControlProgress('Progress')
 		self._apply 		= ControlButton('Apply', checkable=True)
 
-		self._matrixSize 	= ControlSlider('Gaussian blur matrix size', 5, 1, 11)
-		self._sigmaX 		= ControlSlider('Gaussian blur sigma X', 5, 1, 11)
+		self._matrixSize 	= ControlSlider('Gaussian blur matrix size', default=5,  minimum=1, maximum=11)
+		self._sigmaX 		= ControlSlider('Gaussian blur sigma X', default=5,  minimum=1, maximum=11)
 
-		self._jump_2_frame  = ControlSlider('Jump n frames', 100, 1, 10000)
-		self._cmp_jump 		= ControlSlider('Compare with frame in front', 100, 1, 10000)
-		self._threshold 	= ControlSlider('Threshold', 5, 0, 255)
+		self._jump_2_frame  = ControlSlider('Jump n frames', default=100,  minimum=1, maximum=10000)
+		self._cmp_jump 		= ControlSlider('Compare with frame in front', default=100,  minimum=1, maximum=10000)
+		self._threshold 	= ControlSlider('Threshold', default=5,  minimum=0, maximum=255)
 
 		
 		self._formset = [			
