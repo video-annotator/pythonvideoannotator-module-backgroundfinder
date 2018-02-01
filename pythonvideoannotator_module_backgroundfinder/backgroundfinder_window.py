@@ -1,17 +1,17 @@
 import pyforms, math, cv2
 from pysettings import conf
 from pyforms import BaseWidget
-from pyforms.Controls import ControlDir
-from pyforms.Controls import ControlNumber
-from pyforms.Controls import ControlList
-from pyforms.Controls import ControlCombo
-from pyforms.Controls import ControlSlider
-from pyforms.Controls import ControlImage
-from pyforms.Controls import ControlButton
-from pyforms.Controls import ControlCheckBox
-from pyforms.Controls import ControlCheckBoxList
-from pyforms.Controls import ControlEmptyWidget
-from pyforms.Controls import ControlProgress
+from pyforms.controls import ControlDir
+from pyforms.controls import ControlNumber
+from pyforms.controls import ControlList
+from pyforms.controls import ControlCombo
+from pyforms.controls import ControlSlider
+from pyforms.controls import ControlImage
+from pyforms.controls import ControlButton
+from pyforms.controls import ControlCheckBox
+from pyforms.controls import ControlCheckBoxList
+from pyforms.controls import ControlEmptyWidget
+from pyforms.controls import ControlProgress
 
 from mcvgui.dialogs.simple_filter import SimpleFilter
 from mcvapi.blobs.order_by_position import combinations
@@ -27,10 +27,8 @@ class BackgroundFinderWindow(BaseWidget):
 		super(BackgroundFinderWindow, self).__init__('Background finder', parent_win=parent)
 		self.mainwindow = parent
 
-		if conf.PYFORMS_USE_QT5:
-			self.layout().setContentsMargins(5,5,5,5)
-		else:
-			self.layout().setMargin(5)
+		self.set_margin(5)
+        
 		
 		self.setMinimumHeight(400)
 		self.setMinimumWidth(400)
